@@ -1,4 +1,5 @@
 ActiveAdmin.register Customer do
+  permit_params :email, :network_ssid, :network_password
 
   
   # See permitted parameters documentation:
