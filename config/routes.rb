@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :switches
+
   resources :companies
 
   resources :locations

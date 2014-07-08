@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Customer:</strong>
+  <%= @switch.customer %>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @switch.location %>
+</p>
+
+<p>
+  <strong>Uid:</strong>
+  <%= @switch.uid %>
+</p>
+
+<%= link_to 'Edit', edit_switch_path(@switch) %> |
+<%= link_to 'Back', switches_path %>
