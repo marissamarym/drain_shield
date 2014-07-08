@@ -1,4 +1,5 @@
 ActiveAdmin.register Switch do
+  permit_params :uid
 
   
   # See permitted parameters documentation:
