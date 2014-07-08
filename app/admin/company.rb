@@ -1,4 +1,5 @@
 ActiveAdmin.register Company do
+  permit_params :email, :phone
 
   
   # See permitted parameters documentation:
