@@ -1,29 +1,36 @@
-<h1>Listing switches</h1>
-
-<table>
+<%- model_class = Switch -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => Switch %></h1>
+</div>
+<table class="table table-striped">
   <thead>
     <tr>
-      <th>Customer</th>
-      <th>Location</th>
-      <th>Uid</th>
-      <th colspan="3"></th>
+      <th>ID</th>
+      <th><%= model_class.human_attribute_name(:uid) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
-
   <tbody>
     <% @switches.each do |switch| %>
       <tr>
-        <td><%= switch.customer %></td>
-        <td><%= switch.location %></td>
+        <td><%= switch.id %></td>
         <td><%= switch.uid %></td>
-        <td><%= link_to 'Show', switch %></td>
-        <td><%= link_to 'Edit', edit_switch_path(switch) %></td>
-        <td><%= link_to 'Destroy', switch, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%=l switch.created_at, format: :long %></td>
+        <td>
+          <%= link_to switch_path(switch), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>
+            <%= glyph 'info-sign' %>
+            <%= glyph 'pencil' %>
+          <%- end -%>
+          <%= link_to switch_path(switch), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs', :title => "#{ t('.destroy', :default => t('helpers.links.destroy')) }" do %>
+            <%= glyph 'remove' %>
+          <%- end -%>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Switch', new_switch_path %>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_switch_path,
+            :class => 'btn btn-primary' %>
